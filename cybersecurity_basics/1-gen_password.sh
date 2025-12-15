@@ -1,1 +1,2 @@
-head -c 100 /dev/urandom | tr -dc '[:alnum:]' | head -c "$1"
+#!/bin/bash
+tr -dc '[:alnum:]' </dev/urandom | head -c "$1";
