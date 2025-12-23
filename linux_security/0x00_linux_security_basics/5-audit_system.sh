@@ -1,2 +1,2 @@
 #!/bin/bash
-vim 5-audit_system.sh
+sudo vim 5-audit_system.sh
