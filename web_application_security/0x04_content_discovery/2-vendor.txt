@@ -1,1 +1,1 @@
-https://cod.hbtn.io/static/assets/js/app.min.js
+ https://github.com/CodeByZach/pace/
