@@ -1,2 +1,3 @@
 #!/bin/bash
-echo -n "$1" | shasum -a 256 | awk '{print $1}' > 1_hash.txt
+# This script hashes the first argument using sha256sum
+echo -n "$1" | sha256sum | awk '{print $1}' > 1_hash.txt
