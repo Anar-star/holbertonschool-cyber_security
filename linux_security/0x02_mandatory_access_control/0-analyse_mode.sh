@@ -1,2 +1,2 @@
 #!/bin/bash
-getenforce | awk '{print "SELinux status:                 "$1}'
+sestatus | grep "SELinux status:"
