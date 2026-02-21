@@ -1,0 +1,4 @@
+Least Privilege – Principle of Minimum Authority
+The principle of Least Privilege (Minimum Authority) implies that users, applications and systems are granted only the minimum permissions necessary to perform their functions. This approach minimizes security risks by reducing the attack surface.
+The main goal of this principle is to limit the scope of possible damage. If an account is compromised, its limited authority prevents the attacker from spreading widely throughout the system. Therefore, Least Privilege is considered one of the main pillars of a cybersecurity strategy.
+The application of this principle in operating systems, databases, network equipment and especially in cloud environments creates a stable and reliable security environment and plays an important role in protecting technology-oriented companies.
