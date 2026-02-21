@@ -1,0 +1,4 @@
+Secure by Design – Security by Design Principle
+The Secure by Design principle does not mean adding security later, but rather building security mechanisms into the system and software from the initial design stage. This approach is a proactive rather than reactive security strategy.
+Threat modeling, the principle of minimal function, and secure default settings play a key role within this principle. When Secure by Design is applied, the number of vulnerabilities is reduced, security costs are reduced, and user trust is strengthened.
+The application of this approach in software development and system architecture is carried out in CI/CD environments with automated security tests, code analysis, and continuous control mechanisms. This principle is a basic condition for modern technological solutions to be stable, reliable, and secure.
