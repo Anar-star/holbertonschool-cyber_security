@@ -1,0 +1,4 @@
+Defense in Depth – Multi-Layered Defense Principle
+Defense in Depth is one of the main principles in cybersecurity and refers to the fact that security is based not on a single mechanism, but on multiple layers of defense that complement each other. This approach is more effective in preventing possible attacks by ensuring protection of the system at different levels.
+This concept has its roots in military strategies and has been adapted to information technologies over time. In modern times, it is applied as a comprehensive security strategy that covers the network, system, application, data and human factors.
+The Defense in Depth model creates a stable and reliable cyber defense environment by combining physical security, technical control mechanisms, administrative rules and user education. This approach is especially critical for technology-oriented companies and forms the basis of a strong security system.
