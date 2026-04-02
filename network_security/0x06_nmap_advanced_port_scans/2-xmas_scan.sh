@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo nmap -sF -sX -sS --open -Pn '$1'
+sudo nmap -sX -p 440-450 --open --packet-trace --reason '$1'
