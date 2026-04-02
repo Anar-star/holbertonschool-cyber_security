@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo nmap --scanflags -p '$2' stderr stdout '$1' > /dev/null
+sudo nmap --scanflags -p$2 $1 -oN custom_scan.txt >/dev/null 
