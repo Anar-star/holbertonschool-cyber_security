@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo nmap -sM --verbose '$1'
+sudo nmap -sM -vv '$1'
