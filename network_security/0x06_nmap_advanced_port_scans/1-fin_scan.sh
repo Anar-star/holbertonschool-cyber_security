@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo -sF -f -p 80-85 '$1' sleep 2
+sudo nmap -sF -f -T2 -p 80-85 "$1"
