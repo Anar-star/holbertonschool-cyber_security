@@ -1,0 +1,54 @@
+This report is structured as a comprehensive blog post, moving from the technical "why" of buffer overflows to the practical "how" based on your heap manipulation script.
+
+---
+
+# The Anatomy of a Buffer Overflow: From Memory Corruption to System Exploitation
+
+## 1. What is a Buffer Overflow?
+In computer security, a **buffer overflow** occurs when a program writes more data to a fixed-length block of memory (a buffer) than it was allocated to hold. 
+
+Think of it like pouring 2 liters of water into a 1-liter pitcher; the excess has to go somewhere. In a computer, that "somewhere" is the adjacent memory space, which might contain critical data, return addresses, or function pointers. 
+
+### Why It Matters
+* **Arbitrary Code Execution:** Attackers can overwrite the "Return Address" on the stack to point to their own malicious code (shellcode).
+* **System Crashes:** Overwriting metadata or adjacent variables often leads to Segmentation Faults, causing Denial of Service (DoS).
+* **Privilege Escalation:** By manipulating memory, an attacker can trick a high-privilege process into giving them root access.
+
+
+
+## 2. The Mechanism: How Memory Gets Corrupted
+Most buffer overflows happen in memory-unsafe languages like **C and C++**, which do not automatically check if input fits into the destination buffer.
+
+* **Stack-based overflows:** These target local variables and the "Return Pointer." By overflowing a local array, an attacker can change where the function goes next.
+* **Heap-based overflows:** These target dynamically allocated memory (using `malloc` or `strdup`). While harder to exploit than the stack, they can be used to overwrite heap metadata or application strings.
+
+## 3. Practical Example: Replacing Memory in the Heap
+Using the `read_write_heap.py` script we developed, we can see a "controlled" version of a heap manipulation. 
+
+In the provided `main.c` example, the string `"Holberton"` is stored on the heap. By parsing `/proc/[PID]/maps` to find the heap's memory boundaries and then accessing `/proc/[PID]/mem`, our script can surgically find and replace that string:
+
+```python
+# The script finds the offset of "Holberton" and overwrites it
+mem_file.seek(start_addr + offset)
+mem_file.write(bytes(replace_string + '\0', "ascii"))
+```
+
+In a real attack, instead of changing "Holberton" to "maroua," an attacker might find a **Function Pointer** on the heap and overwrite it with the address of a malicious payload. When the program later tries to "call" its intended function, it executes the attacker's code instead.
+
+## 4. Historical Impact: Real-World Disasters
+Buffer overflows are not just theoretical; they have caused some of the most famous incidents in history:
+
+* **The Morris Worm (1988):** One of the first worms to spread across the internet. It used a buffer overflow in the `fingerd` daemon to jump from one machine to another, eventually crashing 10% of all systems connected to the internet at the time.
+* **The Heartbleed Bug (2014):** While technically a "buffer over-read" rather than an overflow, it stemmed from the same lack of bounds checking in OpenSSL, allowing attackers to leak private encryption keys from server memory.
+
+## 5. Defense: How to Stop the Overflow
+Modern systems use "Defense in Depth" to make these attacks significantly harder:
+
+1.  **ASLR (Address Space Layout Randomization):** This randomizes where the heap and stack are located every time a program runs, making it nearly impossible for an attacker to predict the exact memory address they need to overwrite.
+2.  **Stack Canaries:** The compiler places a small "secret" value before the return address. If a buffer overflows, it destroys the canary first. The system checks the canary; if it's changed, the program kills itself before the attacker's code can run.
+3.  **Non-Executable (NX) Stack:** This marks certain areas of memory as "data only," meaning the CPU will refuse to execute any code found there, even if an attacker successfully injects it.
+4.  **Using Safer Functions:** Developers are encouraged to move away from dangerous functions like `gets()` or `strcpy()` in favor of bounds-checked versions like `fgets()` and `strncpy()`.
+
+---
+
+> **Conclusion:** Buffer overflows remain a cornerstone of exploit research. Understanding how to read and write to a process's memory—as we did with our Python script—is the first step in learning how to both exploit and defend these critical vulnerabilities.
