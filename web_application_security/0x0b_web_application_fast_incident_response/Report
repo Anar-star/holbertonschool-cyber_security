@@ -1,0 +1,65 @@
+Incident Response Report: Web Application DoS Attack
+1. Introduction
+
+On April 23, 2026, our web infrastructure experienced a significant service degradation. Investigation revealed a Layer 7 Denial of Service (DoS) attack. The attack aimed to overwhelm the server's request-handling capacity, resulting in intermittent "504 Gateway Timeout" errors for legitimate users. This report details the nature of the attack and the proposed mitigation strategies.
+2. Detailed Attack Analysis
+
+Based on log analysis performed on the server (file: logs.txt), the following technical parameters were identified:
+
+    Attack Source: A single IP address, identified as [INSERT THE IP FROM TASK 0], was responsible for the majority of the malicious traffic.
+
+    Targeted Endpoints: The attack primarily targeted the [INSERT ENDPOINT FROM TASK 1] endpoint. This suggests an attempt to exhaust resources on the root or most accessible part of the application.
+
+    Request Volume: The attacker sent a total of [INSERT COUNT FROM TASK 2] requests within a short window, creating a spike that exceeded normal baseline traffic by over 400%.
+
+    Tools Used: Analysis of the User-Agent strings identified the tool as python-requests/2.31.0. This confirms the attack was not performed via a standard browser but via an automated script designed for high-frequency execution.
+
+3. Proposed Mitigation Strategy: Rate Limiting
+
+The primary recommendation to prevent future occurrences is the implementation of Rate Limiting at the Nginx reverse proxy level.
+
+Rate limiting allows the server to define a "safety ceiling" for the number of requests any single IP address can make in a given timeframe (e.g., 10 requests per second). When an attacker exceeds this limit, the server automatically drops their additional requests, protecting the backend resources.
+4. Justification for the Proposed Solution
+
+Rate limiting is the industry-standard defense for this scenario for several reasons:
+
+    Resource Fairness: It ensures that one malicious actor cannot "starve" legitimate users of server resources.
+
+    Low Latency: Unlike deep packet inspection, rate limiting at the proxy level is computationally "cheap" and does not slow down legitimate traffic.
+
+    Automated Defense: Once configured, it requires no manual intervention to block automated scripts like the one identified in this incident.
+
+5. Steps for Implementation
+
+To implement this on our Nginx servers, the following steps are required:
+
+    Define the Limit Zone: Add a limit_req_zone in the http block of the Nginx configuration to track IP addresses.
+
+    Apply to Location: Add the limit_req directive to the specific location / block.
+
+    Configure Bursting: Set a "burst" parameter to allow for small, legitimate spikes in traffic (e.g., page refreshes) without blocking the user.
+
+    Test Configuration: Run nginx -t to ensure syntax validity before reloading the service.
+
+6. Post-Implementation Monitoring
+
+To ensure the solution is effective and does not impact legitimate users, we will implement:
+
+    Log Monitoring: Use grep or awk scripts to monitor Nginx error logs for "429 Too Many Requests" statuses, which indicate the rate limiter is working.
+
+    Visualization: Integrate Grafana or a similar dashboard to visualize the ratio of successful requests vs. rate-limited requests.
+
+    Alerting: Set up automated alerts to trigger if a single IP address remains rate-limited for more than 10 consecutive minutes.
+
+7. Conclusion
+
+The analyzed incident was a textbook automated DoS attack. While the impact was temporary, it highlighted a lack of request throttling in our current configuration. By implementing the proposed rate-limiting strategy, we significantly harden the application against automated scripts and ensure high availability for our actual users.
+Submission Checklist:
+
+    Copy the text above into a Google Doc.
+
+    Replace the bracketed information (e.g., [INSERT IP]) with the actual results you got from your scripts.
+
+    Set Sharing: Click "Share" -> "General Access" -> "Anyone with the link" -> "Viewer".
+
+    Submit that link as your Task 4.
