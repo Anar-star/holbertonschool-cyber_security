@@ -1,0 +1,39 @@
+Security Incident Report: Web Application Breach Analysis
+1. Introduction
+
+We recently performed a forensic deep-dive into our web application logs following a detected security breach. The goal was simple: figure out how they got in, what they touched, and how we make sure it never happens again. This report breaks down the digital breadcrumbs left by the attackers and provides a roadmap for hardening our defenses.
+2. Incident Summary (The "What Happened")
+
+Our analysis confirms that the system was successfully compromised. Here are the key findings:
+
+    Entry Point: The attackers gained access through the [Insert Service Name from Task 0] service. This was the primary "open door" used to hit the server.
+
+    Target Environment: The breach occurred on a system running [Insert OS Version from Task 1].
+
+    The Compromise: We identified that the [Insert Account Name from Task 2] account was fully compromised. This gave the attackers a foothold to move deeper into the system.
+
+    Scale of Attack: This wasn't a lone wolf. We tracked [Insert Number from Task 3] unique IP addresses involved in the incident, suggesting a coordinated or scripted effort.
+
+    Post-Exploitation: Once inside, the attackers immediately tried to stay there. They modified the firewall [Insert Number from Task 4] times to allow their own traffic and created several unauthorized accounts, specifically: [Insert Usernames from Task 5].
+
+3. Implementation Plan (The "Fix")
+
+To clean up this mess and lock the doors, we are taking the following steps:
+
+    Eviction: Immediately delete the unauthorized accounts and revert the rogue firewall rules found during the audit.
+
+    Patching: Upgrade the kernel and OS to the latest stable version to close the vulnerabilities found in our current setup.
+
+    Credential Reset: Force a password reset for the compromised account and implement Multi-Factor Authentication (MFA) across the board.
+
+    Service Hardening: Restrict access to the entry-point service so it only accepts traffic from known, trusted IP addresses.
+
+4. Monitoring Protocol (The "Safety Net")
+
+We can't just fix it once; we have to keep watching. Our new monitoring strategy includes:
+
+    Real-Time Alerts: We’ve set up automated triggers that ping the security team the moment a new user is created or a firewall rule is changed.
+
+    Log Integrity: We are moving our logs to a remote, read-only server. This prevents attackers from deleting their history if they ever get back in.
+
+    Weekly Audits: Every Friday, we will run the forensic scripts developed during this project to check for any "uniqueness" in login patterns or unauthorized IP spikes.
