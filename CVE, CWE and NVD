@@ -1,0 +1,150 @@
+0.CVE (Common Vulnerabilities and Exposures) is used to give publicly known cybersecurity vulnerabilities unique standard identifiers. This helps security professionals easily identify, track, and discuss the same vulnerability without confusion.
+It contributes to vulnerability management and information sharing by allowing organizations, researchers, and security tools to communicate consistently about security issues, prioritize risks, and apply the correct patches or protections more efficiently.
+
+1.The severity of CVEs helps organizations decide which vulnerabilities should be fixed first. Higher-severity vulnerabilities usually pose greater risks, so they require faster responses and stronger security measures.
+* **Low severity:** Usually has minimal impact and may only require routine monitoring or scheduled patching.
+* **Medium severity:** Can affect system security under certain conditions, so organizations typically plan mitigation or updates within a reasonable timeframe.
+* **High severity:** Represents serious security risks that could lead to significant damage or unauthorized access. These vulnerabilities are usually patched quickly and monitored closely.
+* **Critical severity:** Indicates extremely dangerous vulnerabilities that can be exploited easily and cause major system compromise. Organizations often respond immediately with emergency patching, system isolation, or temporary shutdowns to reduce risk.
+
+2.When a new security vulnerability is discovered, it is analyzed and reported to an authorized organization. If the issue is confirmed, a unique CVE ID, such as “CVE-2026-12345,” is assigned to it. The vulnerability details are then published in the CVE List so that security researchers, vendors, and organizations can reference the same issue consistently.
+The CVE List is managed by the MITRE Corporation through the CVE Program. CVE Numbering Authorities (CNAs) are trusted organizations, such as software vendors, cybersecurity companies, and research institutions, that are authorized to assign CVE IDs to vulnerabilities within their own products or areas of responsibility. Their role is to identify, document, and publish vulnerability information efficiently.
+
+3.Organizations can use CVEs together with CVSS (Common Vulnerability Scoring System) scores to identify, evaluate, and prioritize security risks more effectively. CVEs provide standardized information about vulnerabilities, while CVSS scores indicate their severity and potential impact.
+By using this information, organizations can focus first on high and critical vulnerabilities, apply patches faster, and reduce the chances of cyberattacks. For example, vulnerabilities with high CVSS scores may require immediate patching, stronger monitoring, or temporary mitigation measures.
+To integrate CVE information into vulnerability management programs, organizations can:
+Regularly scan systems using vulnerability assessment tools
+Monitor newly published CVEs and security advisories
+Prioritize remediation based on CVSS severity and business impact
+Maintain patch management and update policies
+Use SIEM and threat intelligence platforms to track active exploitation
+Conduct continuous risk assessments and security audits
+
+4.For this vulnerability scenario, the CVSS v3.1 base metrics are:
+* Attack Vector (AV): Network (N)
+* Attack Complexity (AC): Low (L)
+* Privileges Required (PR): Required/Low (L)
+* User Interaction (UI): Required (R)
+* Scope (S): Unchanged (U)
+Assuming the vulnerability causes high impact on confidentiality, integrity, and availability, the CVSS vector would be approximately:
+CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H
+The calculated CVSS base score is approximately **8.0**, which falls under the **High severity** category.
+This means the vulnerability is dangerous because attackers can exploit it remotely over the network and potentially execute malicious code on the target server. Even though some privileges and user interaction are required, the impact on the system can still be very serious, including data theft, service disruption, or full server compromise.
+The vulnerability could significantly affect an organization’s security posture, especially if the affected web server is publicly accessible or widely used in critical infrastructure.
+Recommended mitigation strategies include:
+* Apply vendor security patches immediately
+* Restrict unnecessary user privileges
+* Use firewalls and intrusion detection systems
+* Monitor systems for suspicious activity
+* Segment critical servers from public networks
+* Perform regular vulnerability scanning and patch management
+
+5.CWE (Common Weakness Enumeration) is a classification system for common software and hardware weaknesses, such as improper input validation or weak authentication. CVE (Common Vulnerabilities and Exposures), on the other hand, identifies specific publicly known vulnerabilities in real systems or software.
+The main difference is that CWE describes general types of weaknesses, while CVE refers to actual discovered vulnerabilities.
+Both are important in cybersecurity because CWE helps developers understand and prevent security flaws during software development, while CVE helps organizations identify, track, and fix existing vulnerabilities in systems and applications.
+
+6.CWE plays an important role in secure software development by helping developers identify common security weaknesses that can lead to vulnerabilities in applications and systems. It provides a standardized list of coding and design flaws, allowing organizations to build more secure software from the early development stages.
+Developers can leverage CWE to improve code quality and security by:
+Following secure coding practices based on known weakness categories
+Using CWE references during code reviews and security testing
+Identifying risky coding patterns before deployment
+Improving developer awareness and cybersecurity training
+Integrating CWE-based checks into static analysis and vulnerability scanning tools
+
+7.Common CWEs include:
+CWE-79 (Cross-Site Scripting - XSS): Allows attackers to inject malicious scripts into web applications, potentially stealing user data or session cookies.
+CWE-89 (SQL Injection): Enables attackers to manipulate database queries, which can lead to unauthorized access or data loss.
+CWE-287 (Improper Authentication): Weak authentication mechanisms may allow unauthorized users to access systems.
+CWE-120 (Buffer Overflow): Can cause system crashes or allow remote code execution.
+
+8.CWE taxonomy organizes software and hardware weaknesses into a structured classification system. This helps in vulnerability assessment by making it easier to identify patterns of security flaws across different systems and applications.
+In risk management, CWE allows organizations to understand which types of weaknesses are most common and most dangerous, helping them prioritize fixes and improve overall security strategy.
+Benefits of using CWE include:
+* Standardized language for describing weaknesses
+* Easier communication between developers, security teams, and researchers
+* Better identification of recurring security issues
+* Improved prioritization of security fixes
+* Support for secure coding and threat prevention practices
+
+9.CWE, CVE, and CVSS are related but serve different roles in cybersecurity.
+* **CWE** describes the *type of weakness* in software (e.g., SQL injection, buffer overflow).
+* **CVE** identifies a *specific real-world vulnerability* in a product or system.
+* **CVSS** measures the *severity and impact* of that vulnerability using a score.
+Together, they strengthen vulnerability management by covering the full cycle: CWE helps prevent issues during development, CVE tracks discovered vulnerabilities, and CVSS helps prioritize which ones to fix first. This combined use allows organizations to better detect, assess, and respond to security risks.
+
+10.**CVE-2021-34527 (PrintNightmare)** is a **critical Windows Print Spooler vulnerability** that allows remote attackers to execute code with SYSTEM privileges.
+* **Severity:** High/Critical (CVSS ~8.8)
+* **Impact:** Full system compromise (install malware, steal data, gain admin control)
+**Mitigation:**
+* Apply Microsoft security patches immediately
+* Disable Print Spooler if not needed
+* Restrict remote printing and monitor system activity
+
+11.Brief Trend Analysis: Linux Kernel CVEs (NVD)
+After filtering Linux kernel vulnerabilities for this year in NVD, the data typically shows a steady stream of new CVEs released throughout the year, since the Linux kernel is widely used and continuously updated.
+Q1 (Jan–Mar): Usually a moderate number of CVEs as early-year patches and disclosures accumulate.
+Q2 (Apr–Jun): Often an increase in CVEs, as more vulnerabilities are discovered and reported after initial audits and research cycles.
+Observed trend pattern
+No sudden drops or spikes in most cases
+CVEs appear consistently each month
+Slight increase in Q2 compared to Q1 is common due to ongoing research and disclosures
+
+12.### **Identified CWE(s)**
+
+* **CWE-89: SQL Injection**
+
+---
+
+### **Why this is a problem**
+
+The code directly inserts user input (`username`) into an SQL query:
+
+```python
+query = "SELECT * FROM users WHERE username='" + username + "';"
+```
+
+This allows an attacker to manipulate the query.
+
+---
+
+### **Attack scenario**
+
+An attacker could input:
+
+```
+' OR '1'='1
+```
+
+Resulting query:
+
+```sql
+SELECT * FROM users WHERE username='' OR '1'='1';
+```
+
+This could return **all users in the database**, leading to data leakage or unauthorized access.
+
+---
+
+### **Security implications**
+
+* Unauthorized data access
+* Possible data theft or modification
+* Full database compromise in severe cases
+
+---
+
+### **Mitigation / fix**
+
+Use **parameterized queries** instead of string concatenation:
+
+```python
+query = "SELECT * FROM users WHERE username=?"
+cursor.execute(query, (username,))
+```
+
+---
+### **Additional security controls**
+* Input validation
+* Least-privilege database access
+* Use ORM frameworks (e.g., SQLAlchemy)
+* Enable database logging and monitoring
