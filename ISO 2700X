@@ -1,0 +1,69 @@
+# Information Security Controls Assessment Report
+
+## 1. Introduction
+
+The company has implemented an Information Security Management System (ISMS) based on **ISO/IEC 27001** and **ISO/IEC 27002**. An internal audit identified weaknesses in asset management, physical security, and backup/information storage procedures.
+
+The purpose of this assessment is to identify the main non-conformities, recommend corrective actions, and suggest additional security controls to reduce information-security risks.
+
+## 2. Non-Conformities and Corrective Actions
+
+### Finding 1: Incomplete Asset Management
+
+**Non-conformity:** Only some company assets are properly identified and documented. This makes it difficult to know what information, hardware, and software need protection.
+
+**Relevant ISO/IEC 27001 requirements:**
+
+* **Clause 6.1.2 – Information security risk assessment**
+* **Clause 6.1.3 – Information security risk treatment**
+* **Clause 8.1 – Operational planning and control**
+
+**Corrective actions:** Create and maintain a complete asset inventory, including hardware, software, information assets, and their owners. Classify assets according to their importance and sensitivity, and regularly review and update the inventory.
+
+### Finding 2: Insufficient Physical Security
+
+**Non-conformity:** Access controls for critical areas such as server rooms are insufficient, increasing the risk of unauthorized physical access.
+
+**Relevant ISO/IEC 27001 requirements:**
+
+* **Clause 6.1.2 – Information security risk assessment**
+* **Clause 8.1 – Operational planning and control**
+
+**Corrective actions:** Introduce controlled access using access cards, biometric authentication, or other appropriate mechanisms. Maintain access logs, restrict access to authorized personnel, use visitor controls, and regularly review access permissions.
+
+### Finding 3: Poorly Defined Backup and Storage Procedures
+
+**Non-conformity:** Backup and information-storage procedures are not clearly defined. This can result in data loss or an inability to recover systems after an incident.
+
+**Relevant ISO/IEC 27001 requirements:**
+
+* **Clause 6.1.2 – Information security risk assessment**
+* **Clause 6.1.3 – Information security risk treatment**
+* **Clause 8.1 – Operational planning and control**
+
+**Corrective actions:** Establish a formal backup policy defining what must be backed up, backup frequency, retention periods, responsible personnel, and storage locations. Backups should be protected from unauthorized access and regularly tested through restoration exercises.
+
+## 3. Additional Recommendations – ISO/IEC 27002 Controls
+
+The company should also consider the following ISO/IEC 27002 controls:
+
+* **Asset management:** Maintain an accurate inventory and assign ownership to assets.
+* **Physical security controls:** Protect critical facilities using access controls, monitoring, and visitor management.
+* **Information backup:** Perform regular backups and test whether data can be successfully restored.
+* **Access control:** Apply least privilege so employees only have the access necessary for their roles.
+* **Logging and monitoring:** Monitor important systems and security events to detect suspicious activity.
+* **Incident management:** Establish procedures for detecting, reporting, and responding to security incidents.
+
+These controls can reduce risks such as unauthorized access, data loss, theft, and prolonged service disruption.
+
+## 4. Conclusion
+
+The audit identified three important weaknesses: incomplete asset management, inadequate physical access controls, and poorly defined backup procedures. The company should address these issues through documented processes, appropriate technical and physical controls, regular reviews, and continuous risk assessment.
+
+Continuous improvement is an important part of an effective ISMS. Corrective actions should therefore be monitored and reviewed to ensure that the controls remain effective as the organization's systems and risks change.
+
+## 5. References
+
+* **ISO/IEC 27001:2022** – Information security management systems — Requirements.
+* **ISO/IEC 27002:2022** – Information security controls.
+* ISO – International Organization for Standardization, information security management standards.
