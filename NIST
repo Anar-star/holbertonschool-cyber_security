@@ -1,0 +1,86 @@
+# Incident Response Plan: Data Breach Mitigation
+
+**Framework Alignment:** NIST SP 800-61 Rev. 2
+
+**Classification:** Internal Security Document
+
+---
+
+## 1. Executive Summary & Overview
+
+* **Background:** System monitoring detected anomalous outbound data transfers and unauthorized access targeting core databases containing sensitive employee and customer PII/PHI.
+* **Purpose:** Establish a structured, repeatable mechanism for responding to security incidents, minimizing operational impact, and complying with legal breach notifications.
+* **Scope:** Applies to all information systems, networks, endpoints, cloud resources, databases, and personnel across the organization.
+
+---
+
+## 2. Incident Response Process (NIST SP 800-61 Lifecycle)
+
+```
+[ Preparation ] ──> [ Detection & Analysis ] ──> [ Containment, Eradication & Recovery ] ──> [ Post-Incident Activity ]
+
+```
+
+### Phase 1: Preparation
+
+* **Tools & Infrastructure:** Maintain EDR agents, SIEM logging, forensic workstations, and isolated backup storage.
+* **Communication:** Establish encrypted, out-of-band communication channels (e.g., Signal, dedicated backup email).
+* **Prevention & Readiness:** Enforce MFA and role-based access; conduct bi-annual tabletop response drills.
+
+### Phase 2: Detection & Analysis
+
+* **Triage & Validation:** Correlate SIEM/EDR alerts with host memory dumps and log files to eliminate false positives.
+* **Scoping:** Analyze Indicators of Compromise (IoCs)—such as suspicious IPs, file hashes, and administrative commands—to determine the attack vector.
+* **Prioritization:** Assign a high severity tier based on exposure of sensitive data and system criticality.
+
+### Phase 3: Containment, Eradication & Recovery
+
+* **Short-Term Containment:** Isolate affected hosts from the network via EDR, disable compromised credentials, and block malicious IPs at the firewall.
+* **Long-Term Containment & Eradication:** Capture forensic disk/memory images, terminate malicious processes/web shells, and patch underlying vulnerabilities.
+* **Recovery:** Restore systems from clean, immutable backups; enforce organization-wide password and MFA token resets; monitor network telemetry for 72+ hours post-remediation.
+
+### Phase 4: Post-Incident Activity
+
+* **Lessons Learned:** Conduct a debrief meeting within 5–7 business days.
+* **Evidence Retention:** Retain forensic artifacts and logs securely for regulatory compliance (1–3 years).
+
+---
+
+## 3. Team Roles and Responsibilities
+
+| Role | Primary Responsibilities | Primary Phase |
+| --- | --- | --- |
+| **Incident Commander (IC)** | Directs strategy, authorizes critical decisions (e.g., system isolation), and coordinates response efforts. | All Phases |
+| **Technical Specialist / Lead Analyst** | Conducts technical forensics, log analysis, malware investigation, and containment execution. | Detection, Containment, Eradication |
+| **Communications Lead** | Manages internal leadership updates, employee notifications, and external public relations. | Containment, Post-Incident |
+| **Legal & Compliance Officer** | Oversees regulatory breach reporting (GDPR, HIPAA), law enforcement liaison, and liability management. | Analysis, Post-Incident |
+| **IT Ops / Infrastructure Specialist** | Rebuilds systems, restores backups, isolates endpoints, and implements firewall policies. | Containment, Recovery |
+
+* **Handover Protocol:** During shift changes or role transfers, outgoing leads must conduct a brief handover detailing open tasks, current containment status, and key metrics.
+
+---
+
+## 4. Post-Incident Analysis & Lessons Learned
+
+* **Documentation:** The Incident Commander compiles an **Incident Final Report** detailing the timeline, root cause, data scope, and financial impact.
+* **Key Review Questions:**
+1. How were the initial indicators detected, and could detection time be improved?
+2. Did containment steps effectively limit data exfiltration?
+3. Were there any tooling or logging visibility gaps?
+
+
+* **Actionable Updates:** Convert new IoCs into SIEM rules/firewall blocklists, update data handling policies, and incorporate incident details into employee security awareness training.
+
+---
+
+## 5. Conclusion
+
+A NIST-aligned Incident Response Plan prevents chaotic, reactive responses during security events, protecting assets and ensuring legal compliance. Continuous testing through tabletop exercises and post-incident updates ensures the plan evolves alongside new threat vectors.
+
+---
+
+## 6. References
+
+1. **NIST SP 800-61 Rev. 2:** *Computer Security Incident Handling Guide* ([NIST CSRC](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final?utm_source=gemini))
+2. **NIST Cybersecurity Framework (CSF) v2.0:** ([NIST CSF](https://www.nist.gov/cyberframework?utm_source=gemini))
+3. **CISA Incident Response Resources:** ([CISA Services](https://www.google.com/search?q=https://www.cisa.gov/resources-tools/services/incident-response-services&utm_source=gemini))
